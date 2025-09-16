@@ -10,11 +10,6 @@ IFF_TUN = 0x0001
 IFF_NO_PI = 0x1000
 
 def create_tun():
-#    tun = open('/dev/net/tun', 'r+b')
-#    ifr = struct.pack('16sH', b'ark%d', IFF_TUN | IFF_NO_PI)
-#    fcntl.ioctl(tun, TUNSETIFF, ifr)
-#    return tun
-
     tun = os.open("/dev/net/tun", os.O_RDWR)
     ifr = struct.pack('16sH', b'tun%d', IFF_TUN | IFF_NO_PI)
     fcntl.ioctl(tun, TUNSETIFF, ifr)
